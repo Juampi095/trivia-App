@@ -2,8 +2,8 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {Button, Text, View} from 'react-native';
-import {SelectModal} from '../../components/SelectModal';
-import {styles} from '../../styles/GlobalStyles';
+import {SelectModal} from '../../../components/customModal/SelectModal';
+import {styles} from '../screens/HomeScreenStyle';
 
 type RootStackParamList = {
   TriviaApp: undefined;

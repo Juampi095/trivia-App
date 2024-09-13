@@ -1,7 +1,7 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen} from '../screens/home/HomeScreen';
-import {ResultScreen} from '../screens/result/ResultScreen';
-import {TriviaScreen} from '../screens/trivia/TriviaScreen';
+import {HomeScreen} from '../modules/home/screens/HomeScreen';
+import {ResultScreen} from '../modules/result/screens/ResultScreen';
+import {TriviaScreen} from '../modules/trivia/screens/TriviaScreen';
 
 const Stack = createStackNavigator();
 

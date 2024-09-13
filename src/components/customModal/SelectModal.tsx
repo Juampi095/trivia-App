@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from '../styles/GlobalStyles';
+import {styles} from '../../modules/home/screens/HomeScreenStyle';
 
 type SelectModalProps = {
   visible: boolean;

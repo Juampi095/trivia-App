@@ -2,7 +2,8 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useEffect, useState} from 'react';
 import {Alert, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from '../../styles/GlobalStyles';
+import {TriviaService} from '../services/TriviaService';
+import {styles} from './TriviaScreenStyle';
 
 type RouteParams = {
   category: string;
@@ -12,13 +13,6 @@ type RouteParams = {
 type RootStackParamList = {
   TriviaScreen: undefined;
   ResultScreen: {score: number; category: string; difficulty: string};
-};
-
-const categoryMap: {[key: string]: number} = {
-  'General Knowledge': 9,
-  'Entertainment: Video Games': 15,
-  Mythology: 20,
-  Vehicles: 28,
 };
 
 export const TriviaScreen = () => {
@@ -39,32 +33,20 @@ export const TriviaScreen = () => {
     const fetchQuestions = async () => {
       try {
         setLoading(true);
-        const categoryId = categoryMap[category];
-        const response = await fetch(
-          `https://opentdb.com/api.php?amount=5&category=${categoryId}&difficulty=${difficulty}&type=multiple`,
+        const questions = await TriviaService.fetchQuestions(
+          category,
+          difficulty,
         );
-        const data = await response.json();
-
-        if (data.results && data.results.length > 0) {
-          setQuestions(data.results);
-          shuffleAnswers(data.results[0]);
-        } else {
-          setError('No questions available for this category/difficulty');
-        }
+        setQuestions(questions);
+        setShuffledAnswers(TriviaService.shuffleAnswers(questions[0]));
       } catch (error) {
-        setError('Failed to fetch questions');
+        setError(error as string);
       } finally {
         setLoading(false);
       }
     };
-
     fetchQuestions();
   }, [category, difficulty]);
-
-  const shuffleAnswers = (question: any) => {
-    const answers = question.incorrect_answers.concat(question.correct_answer);
-    setShuffledAnswers(answers.sort(() => Math.random() - 0.5));
-  };
 
   const handleAnswer = (answer: string) => {
     if (selectedAnswer === null && questions[currentQuestionIndex]) {
@@ -80,7 +62,9 @@ export const TriviaScreen = () => {
     setSelectedAnswer(null);
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
-      shuffleAnswers(questions[currentQuestionIndex + 1]);
+      setShuffledAnswers(
+        TriviaService.shuffleAnswers(questions[currentQuestionIndex + 1]),
+      );
     } else {
       navigation.navigate('ResultScreen', {score, category, difficulty});
     }

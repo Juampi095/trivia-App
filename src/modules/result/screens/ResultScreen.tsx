@@ -1,8 +1,7 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {Button, Text, View} from 'react-native';
-import {styles} from '../../styles/GlobalStyles';
-
+import {styles} from '../screens/ResultScreenStyles';
 type RootStackParamList = {
   TriviaApp: undefined;
   TriviaScreen: {category: string; difficulty: string};
