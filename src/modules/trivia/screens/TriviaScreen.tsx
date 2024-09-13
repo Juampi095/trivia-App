@@ -40,7 +40,7 @@ export const TriviaScreen = () => {
         setQuestions(questions);
         setShuffledAnswers(TriviaService.shuffleAnswers(questions[0]));
       } catch (error) {
-        setError(error as string);
+        setError((error as Error).message);
       } finally {
         setLoading(false);
       }
@@ -66,7 +66,7 @@ export const TriviaScreen = () => {
         TriviaService.shuffleAnswers(questions[currentQuestionIndex + 1]),
       );
     } else {
-      navigation.navigate('ResultScreen', {score, category, difficulty});
+      navigation.push('ResultScreen', {score, category, difficulty});
     }
   };
 

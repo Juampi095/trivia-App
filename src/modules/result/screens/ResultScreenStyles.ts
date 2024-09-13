@@ -10,13 +10,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 20,
     },
-
-    scoreText: {
-        fontSize: 24,
-        fontWeight: 600,
-        color: '#2d3436',
-        marginBottom: 30
-    },
     titleText: {
         fontSize: 28,
         fontWeight: 'bold',

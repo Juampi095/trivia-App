@@ -10,15 +10,17 @@ const categoryMap: { [key: string]: number } = {
 const fetchQuestions = async (category: string, difficulty: string) => {
     try {
         const categoryId = categoryMap[category]
-        const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${categoryId}&difficulty=${difficulty}&type=multiple`,)
+        const response = await fetch(`https://opentdb.com/api.php?amount=5&category=${categoryId}&difficulty=${difficulty}&type=multiple`
+        );
         const data = await response.json()
-        if (data.results && data.results > 0) {
+
+        if (data.results && data.results.length > 0) {
             return data.results
         } else {
             throw new Error('No questions available for this question/category ')
         }
     } catch (err) {
-        throw err;
+        throw new Error((err as Error).message || 'Error fetching questions ')
     }
 };
 
