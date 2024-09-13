@@ -20,7 +20,7 @@ export const SelectModal = (props: SelectModalProps) => {
       onRequestClose={onClose}>
       <View style={styles.modalView}>
         <View style={styles.modalContent}>
-          <Text style={styles.modalText}>
+          <Text style={styles.modalTitle}>
             {type === 'category' ? 'Select category' : 'Select difficulty'}
           </Text>
           {type === 'category' ? (

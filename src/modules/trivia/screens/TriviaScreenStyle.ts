@@ -1,5 +1,3 @@
-// styles/GlobalStyles.ts
-
 import { StyleSheet } from "react-native";
 
 
@@ -47,6 +45,13 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     loadingText: {
+        fontSize: 16,
+        padding: 10,
+        color: '#40a0ff',
+        textAlign: 'center',
+
+    },
+    text: {
         fontSize: 16,
         padding: 10,
         color: '#40a0ff',

@@ -17,7 +17,7 @@ const fetchQuestions = async (category: string, difficulty: string) => {
         if (data.results && data.results.length > 0) {
             return data.results
         } else {
-            throw new Error('No questions available for this question/category ')
+            throw new Error('No questions available for this difficulty/category ')
         }
     } catch (err) {
         throw new Error((err as Error).message || 'Error fetching questions ')

@@ -5,9 +5,8 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff7ff',
         padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
         paddingHorizontal: 20,
+        alignItems: 'center'
     },
     titleText: {
         fontSize: 28,
@@ -15,6 +14,7 @@ export const styles = StyleSheet.create({
         color: '#333',
         marginBottom: 20,
         fontFamily: 'Avenir',
+
     },
     modalView: {
         flex: 1,
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     },
     modalContent: {
         margin: 20,
-        backgroundColor: 'white',
+        backgroundColor: '#fff7ff',
         borderRadius: 30,
         padding: 40,
         alignItems: 'center',
@@ -39,7 +39,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         justifyContent: 'center',
     },
-    modalText: {
+    modalTitle: {
         marginBottom: 20,
         textAlign: 'center',
         fontSize: 18,

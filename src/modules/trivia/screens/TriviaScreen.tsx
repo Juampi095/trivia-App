@@ -66,6 +66,7 @@ export const TriviaScreen = () => {
         TriviaService.shuffleAnswers(questions[currentQuestionIndex + 1]),
       );
     } else {
+      //TODO: probar naviagte en lugar de push
       navigation.push('ResultScreen', {score, category, difficulty});
     }
   };
@@ -75,7 +76,8 @@ export const TriviaScreen = () => {
 
   const currentQuestion = questions[currentQuestionIndex];
 
-  if (!currentQuestion) return <Text>No questions found</Text>;
+  if (!currentQuestion)
+    return <Text style={styles.text}>No questions found</Text>;
 
   return (
     <View style={styles.container}>
