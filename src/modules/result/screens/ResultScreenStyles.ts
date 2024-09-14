@@ -1,20 +1,45 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, useWindowDimensions } from 'react-native';
 
+export const makeStyles = () => {
+    const { height } = useWindowDimensions();
 
-export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'linear-gradient(to bottom, #fff7ff, #c9e4ca)',
-        padding: 20,
-        paddingHorizontal: 20,
-        alignItems: 'center',
-        marginHorizontal: 20
-    },
-    titleText: {
-        fontSize: 28,
-        fontWeight: 'bold',
-        color: '#333',
-        marginBottom: 20,
-        fontFamily: 'Avenir',
-    },
-})
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: '#9D5BF5',
+            padding: 20,
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: height * 0.03,
+        },
+        titleText: {
+            fontSize: 28,
+            fontWeight: 'bold',
+            color: '#FFF',
+            marginBottom: 20,
+            fontFamily: 'Avenir',
+        },
+        buttonRestart: {
+            width: '80%',
+            padding: 15,
+            marginVertical: 10,
+            backgroundColor: '#74b9ff',
+            borderRadius: 10,
+            alignItems: 'center',
+        },
+        buttonExit: {
+            width: '80%',
+            padding: 15,
+            marginVertical: 10,
+            backgroundColor: '#d63031',
+            borderRadius: 10,
+            alignItems: 'center',
+        },
+        buttonText: {
+            fontSize: 18,
+            color: '#fff',
+        },
+
+    });
+};

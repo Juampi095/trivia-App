@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from '../../modules/home/screens/HomeScreenStyle';
+import {makeStyles} from './SelectModalStyles';
 
 type SelectModalProps = {
   visible: boolean;
@@ -10,6 +10,7 @@ type SelectModalProps = {
 };
 
 export const SelectModal = (props: SelectModalProps) => {
+  const styles = makeStyles();
   const {visible, onClose, onSelect, type} = props;
 
   return (

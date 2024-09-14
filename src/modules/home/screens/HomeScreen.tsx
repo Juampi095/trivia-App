@@ -1,9 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
-import {Button, Text, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {SelectModal} from '../../../components/customModal/SelectModal';
-import {styles} from '../screens/HomeScreenStyle';
+import {makeStyles} from './HomeScreenStyle';
 
 type RootStackParamList = {
   TriviaApp: undefined;
@@ -16,6 +16,7 @@ type HomeScreenNavigationProp = StackNavigationProp<
 >;
 
 export const HomeScreen = () => {
+  const styles = makeStyles();
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const [category, setCategory] = useState('');
   const [difficulty, setDifficulty] = useState('');
@@ -34,40 +35,42 @@ export const HomeScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Welcome to Trivia App!</Text>
-
-      <Button
-        title={category || 'Select category'}
-        onPress={() => {
-          setModalType('category');
-          setModalVisible(true);
-        }}
-        color="#74b9ff"
-      />
-
-      <Button
-        title={difficulty || 'Select difficulty'}
-        onPress={() => {
-          setModalType('difficulty');
-          setModalVisible(true);
-        }}
-        color="#74b9ff"
-      />
-      <Button
-        title="Play!"
-        onPress={() =>
-          navigation.navigate('TriviaScreen', {category, difficulty})
-        }
-        disabled={!category || !difficulty}
-        color={!category || !difficulty ? 'gray' : '#0984e3'}
-      />
-      <SelectModal
-        visible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSelect={handleSelect}
-        type={modalType}
-      />
-    </View>
+    <ScrollView style={styles.container}>
+      <View style={styles.viewMainContainer}>
+        <Text style={styles.titleText}>Welcome to Trivia App!</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            setModalType('category');
+            setModalVisible(true);
+          }}>
+          <Text style={styles.buttonText}>{category || 'Select Category'}</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            setModalType('difficulty');
+            setModalVisible(true);
+          }}>
+          <Text style={styles.buttonText}>
+            {difficulty || 'Select difficulty'}
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{...styles.button, ...styles.buttonPlay}}
+          onPress={() =>
+            navigation.navigate('TriviaScreen', {category, difficulty})
+          }
+          disabled={!category || !difficulty}>
+          <Text style={styles.buttonText}>Play!</Text>
+        </TouchableOpacity>
+        <SelectModal
+          visible={modalVisible}
+          onClose={() => setModalVisible(false)}
+          onSelect={handleSelect}
+          type={modalType}
+        />
+      </View>
+    </ScrollView>
   );
 };

@@ -13,7 +13,7 @@ export const makeStyles = () => {
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
-            marginTop: height * 0.03,
+            marginTop: height * 0.05,
         },
         titleText: {
             fontSize: 28,
@@ -21,21 +21,6 @@ export const makeStyles = () => {
             color: '#FFF',
             marginBottom: '10%',
             fontFamily: 'Avenir',
-        },
-        button: {
-            width: '80%',
-            padding: 15,
-            marginVertical: 10,
-            backgroundColor: '#74b9ff',
-            borderRadius: 10,
-            alignItems: 'center',
-        },
-        buttonText: {
-            fontSize: 18,
-            color: '#fff',
-        },
-        buttonPlay: {
-            backgroundColor: '#FF7F50',
         },
         modalView: {
             flex: 1,

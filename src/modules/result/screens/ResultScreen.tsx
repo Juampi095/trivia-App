@@ -1,7 +1,7 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {Button, Text, View} from 'react-native';
-import {styles} from '../screens/ResultScreenStyles';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {makeStyles} from '../screens/ResultScreenStyles';
 
 type RootStackParamList = {
   TriviaApp: undefined;
@@ -10,6 +10,7 @@ type RootStackParamList = {
 };
 
 export const ResultScreen = () => {
+  const styles = makeStyles();
   const navigation =
     useNavigation<StackNavigationProp<RootStackParamList, 'ResultScreen'>>();
   const route = useRoute<RouteProp<RootStackParamList, 'ResultScreen'>>();
@@ -18,26 +19,26 @@ export const ResultScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.titleText}>Game over! Your score is: {score}</Text>
-      <Button
-        title="Restart"
+      <TouchableOpacity
+        style={styles.buttonRestart}
         onPress={() =>
           navigation.reset({
             index: 0,
             routes: [{name: 'TriviaScreen', params: {category, difficulty}}],
           })
-        }
-        color="#0984e3"
-      />
-      <Button
-        title="Exit"
+        }>
+        <Text style={styles.buttonText}>Restart!</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonExit}
         onPress={() =>
           navigation.reset({
             index: 0,
             routes: [{name: 'TriviaApp', params: {category, difficulty}}],
           })
-        }
-        color="#d63031"
-      />
+        }>
+        <Text style={styles.buttonCancel}>Exit</Text>
+      </TouchableOpacity>
     </View>
   );
 };

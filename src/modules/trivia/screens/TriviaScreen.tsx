@@ -3,7 +3,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useEffect, useState} from 'react';
 import {Alert, Text, TouchableOpacity, View} from 'react-native';
 import {TriviaService} from '../services/TriviaService';
-import {styles} from './TriviaScreenStyle';
+import {makeStyles} from './TriviaScreenStyle';
 
 type RouteParams = {
   category: string;
@@ -16,6 +16,7 @@ type RootStackParamList = {
 };
 
 export const TriviaScreen = () => {
+  const styles = makeStyles();
   const navigation =
     useNavigation<StackNavigationProp<RootStackParamList, 'TriviaScreen'>>();
   const route = useRoute<RouteProp<{params: RouteParams}, 'params'>>();
@@ -67,7 +68,7 @@ export const TriviaScreen = () => {
       );
     } else {
       //TODO: probar naviagte en lugar de push
-      navigation.push('ResultScreen', {score, category, difficulty});
+      navigation.navigate('ResultScreen', {score, category, difficulty});
     }
   };
 
@@ -113,7 +114,7 @@ export const TriviaScreen = () => {
         disabled={selectedAnswer === null}
         style={[
           styles.nextButton,
-          {backgroundColor: selectedAnswer === null ? 'gray' : '#9ebaff'},
+          {backgroundColor: selectedAnswer === null ? 'gray' : '#FF7F50'},
         ]}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>
