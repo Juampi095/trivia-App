@@ -8,11 +8,13 @@ export const makeStyles = () => {
             flex: 1,
             backgroundColor: '#9D5BF5',
             padding: 20,
+
+        },
+        viewMainContainer: {
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
             marginTop: height * 0.03,
-
         },
 
         questionTitle: {
@@ -24,7 +26,7 @@ export const makeStyles = () => {
         questionContainer: {
             padding: 20,
             borderRadius: 10,
-            backgroundColor: '#dfe6e9',
+            backgroundColor: '#17d4a5',
             marginBottom: 20,
             width: '90%',
             shadowColor: '#2d3436',
@@ -37,7 +39,7 @@ export const makeStyles = () => {
             fontSize: 20,
             fontWeight: '600',
             textAlign: 'center',
-            color: '#333',
+            color: '#FFF',
         },
         answerButton: {
             width: '80%',
@@ -49,9 +51,9 @@ export const makeStyles = () => {
             alignItems: 'center',
         },
         loadingText: {
-            fontSize: 16,
+            fontSize: 18,
             padding: 10,
-            color: '#40a0ff',
+            color: '#9D5BF5',
             textAlign: 'center',
         },
         text: {

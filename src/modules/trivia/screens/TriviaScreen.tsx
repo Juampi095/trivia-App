@@ -1,7 +1,9 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useEffect, useState} from 'react';
-import {Alert, Text, TouchableOpacity, View} from 'react-native';
+import {Alert, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {AnimationLottie} from '../../../components/animationComponent/AnimationGif.tsx';
+import {GifService} from '../services/GifService';
 import {TriviaService} from '../services/TriviaService';
 import {makeStyles} from './TriviaScreenStyle';
 
@@ -67,7 +69,6 @@ export const TriviaScreen = () => {
         TriviaService.shuffleAnswers(questions[currentQuestionIndex + 1]),
       );
     } else {
-      //TODO: probar naviagte en lugar de push
       navigation.navigate('ResultScreen', {score, category, difficulty});
     }
   };
@@ -81,43 +82,46 @@ export const TriviaScreen = () => {
     return <Text style={styles.text}>No questions found</Text>;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.questionTitle}>
-        Question {currentQuestionIndex + 1}
-      </Text>
+    <ScrollView style={styles.container}>
+      <View style={styles.viewMainContainer}>
+        <Text style={styles.questionTitle}>
+          Question {currentQuestionIndex + 1}
+        </Text>
 
-      <View style={styles.questionContainer}>
-        <Text style={styles.questionText}>{currentQuestion.question}</Text>
-      </View>
+        <View style={styles.questionContainer}>
+          <Text style={styles.questionText}>{currentQuestion.question}</Text>
+        </View>
 
-      {shuffledAnswers.map((answer: string) => (
+        {shuffledAnswers.map((answer: string) => (
+          <TouchableOpacity
+            key={answer}
+            onPress={() => handleAnswer(answer)}
+            disabled={selectedAnswer !== null}
+            style={[
+              styles.answerButton,
+              selectedAnswer && {
+                backgroundColor:
+                  answer === currentQuestion.correct_answer
+                    ? 'green'
+                    : selectedAnswer === answer
+                    ? 'red'
+                    : 'gray',
+              },
+            ]}>
+            <Text style={styles.answerText}>{answer}</Text>
+          </TouchableOpacity>
+        ))}
         <TouchableOpacity
-          key={answer}
-          onPress={() => handleAnswer(answer)}
-          disabled={selectedAnswer !== null}
+          onPress={handleNext}
+          disabled={selectedAnswer === null}
           style={[
-            styles.answerButton,
-            selectedAnswer && {
-              backgroundColor:
-                answer === currentQuestion.correct_answer
-                  ? 'green'
-                  : selectedAnswer === answer
-                  ? 'red'
-                  : 'gray',
-            },
+            styles.nextButton,
+            {backgroundColor: selectedAnswer === null ? 'gray' : '#9ebaff'},
           ]}>
-          <Text style={styles.answerText}>{answer}</Text>
+          <Text style={styles.nextButtonText}>Next</Text>
         </TouchableOpacity>
-      ))}
-      <TouchableOpacity
-        onPress={handleNext}
-        disabled={selectedAnswer === null}
-        style={[
-          styles.nextButton,
-          {backgroundColor: selectedAnswer === null ? 'gray' : '#9ebaff'},
-        ]}>
-        <Text style={styles.nextButtonText}>Next</Text>
-      </TouchableOpacity>
-    </View>
+        <AnimationLottie source={GifService.getRandomGif()} />
+      </View>
+    </ScrollView>
   );
 };

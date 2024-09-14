@@ -6,11 +6,21 @@ export const makeStyles = () => {
     return StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#9D5BF5',
             padding: 20,
         },
-
-
+        viewMainContainer: {
+            justifyContent: 'center',
+            flexDirection: 'column',
+            alignItems: 'center',
+            marginTop: height * 0.03,
+        },
+        titleText: {
+            fontSize: 28,
+            fontWeight: 'bold',
+            color: '#FFF',
+            marginBottom: '10%',
+            fontFamily: 'Avenir',
+        },
         modalView: {
             flex: 1,
             justifyContent: 'center',

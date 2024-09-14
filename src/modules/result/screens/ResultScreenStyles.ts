@@ -8,6 +8,8 @@ export const makeStyles = () => {
             flex: 1,
             backgroundColor: '#9D5BF5',
             padding: 20,
+        },
+        viewMainContainer: {
             justifyContent: 'center',
             flexDirection: 'column',
             alignItems: 'center',
@@ -24,7 +26,7 @@ export const makeStyles = () => {
             width: '80%',
             padding: 15,
             marginVertical: 10,
-            backgroundColor: '#74b9ff',
+            backgroundColor: '#FF7F50',
             borderRadius: 10,
             alignItems: 'center',
         },

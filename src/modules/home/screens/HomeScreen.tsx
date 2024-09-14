@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {AnimationLottie} from '../../../components/animationComponent/AnimationGif.tsx';
 import {SelectModal} from '../../../components/customModal/SelectModal';
 import {makeStyles} from './HomeScreenStyle';
 
@@ -37,6 +38,7 @@ export const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.viewMainContainer}>
+        <AnimationLottie source="https://lottie.host/6b50272f-98df-4b3b-a070-fc2f5a6c161f/tUFIwHzkOF.json" />
         <Text style={styles.titleText}>Welcome to Trivia App!</Text>
         <TouchableOpacity
           style={styles.button}
