@@ -114,7 +114,7 @@ export const TriviaScreen = () => {
         disabled={selectedAnswer === null}
         style={[
           styles.nextButton,
-          {backgroundColor: selectedAnswer === null ? 'gray' : '#FF7F50'},
+          {backgroundColor: selectedAnswer === null ? 'gray' : '#9ebaff'},
         ]}>
         <Text style={styles.nextButtonText}>Next</Text>
       </TouchableOpacity>

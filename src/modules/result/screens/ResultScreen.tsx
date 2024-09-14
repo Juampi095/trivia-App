@@ -37,7 +37,7 @@ export const ResultScreen = () => {
             routes: [{name: 'TriviaApp', params: {category, difficulty}}],
           })
         }>
-        <Text style={styles.buttonCancel}>Exit</Text>
+        <Text style={styles.buttonText}>Exit</Text>
       </TouchableOpacity>
     </View>
   );
